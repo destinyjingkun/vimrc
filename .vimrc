@@ -1,8 +1,33 @@
-" ==============================
-" Username: Evan Chen
-" Email: destinyjingkun@gmail.com
-" ==============================
+" ┌────────────────┐
+" |   Evan Chen    |
+" └────────────────┘
 
+" ┌────────────────┐
+" |  默认配置开始  |
+" └────────────────┘
+
+" ┌────────────────┐
+" |  默认配置结束  |
+" └────────────────┘
+
+
+
+
+
+
+" ┌──────────────────┐
+" |  Vundle插件开始  |
+" └──────────────────┘
+" ┌──────────────────┐
+" |  Vundle插件结束  |
+" └──────────────────┘
+
+
+
+
+"	==============================
+"	默认配置结束
+" ==============================
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -57,6 +82,7 @@ set fileencodings=utf-8								"文件编码
 set number														"行号设置
 set numberwidth=6											"行号宽度
 " |--空格设置
+set autoindent
 set backspace=2 											"设置推格键长度
 set tabstop=2 												"设置tab键长度
 set sw=2
@@ -109,3 +135,6 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 " |--autocmd设置
 " |--|--默认开启NerdTree
 autocmd VimEnter * NERDTree
+" ┌──────────────────┐
+" |  Vundle插件结束  |
+" └──────────────────┘
