@@ -1,7 +1,67 @@
-"=============================================================
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Username: Evan
 "Email: destinyjingkun@gmail.com
-"=============================================================
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"[ 公共设置 ]
+"设置编码
+set encoding=utf8
+
+"在状态行里显示 (部分) 命令
+set showcmd
+
+"设置<leader>键
+let mapleader = ","
+"map <C-h> <C-w>h
+"map <C-j> <C-w>j
+"map <C-k> <C-w>k
+"map <C-l> <C-w>l
+
+"设置缩进
+set expandtab smarttab
+set tabstop=2 softtabstop=2 shiftwidth=2
+set autoindent cindent smartindent shiftround
+
+"行号
+set number
+set numberwidth=5
+
+"当前行高亮
+au WinLeave * set nocursorline        "nocursorcolumn
+au WinEnter * set cursorline          "cursorcolumn
+set cursorline
+
+"交换区 & 备份
+set noswapfile
+set nobackup
+
+"Tab标签
+noremap <silent><tab>m :tabnew<cr>
+noremap <silent><tab>e :tabclose<cr>
+noremap <silent><tab>n :tabn<cr>
+noremap <silent><tab>p :tabp<cr>
+noremap <silent><leader>t :tabnew<cr>
+noremap <silent><leader>g :tabclose<cr>
+noremap <silent><leader>1 :tabn 1<cr>
+noremap <silent><leader>2 :tabn 2<cr>
+noremap <silent><leader>3 :tabn 3<cr>
+noremap <silent><leader>4 :tabn 4<cr>
+noremap <silent><leader>5 :tabn 5<cr>
+noremap <silent><leader>6 :tabn 6<cr>
+noremap <silent><leader>7 :tabn 7<cr>
+noremap <silent><leader>8 :tabn 8<cr>
+noremap <silent><leader>9 :tabn 9<cr>
+noremap <silent><leader>0 :tabn 10<cr>
+noremap <silent><s-tab> :tabnext<CR>
+inoremap <silent><s-tab> <ESC>:tabnext<CR>
+
+"普通map
+noremap q :q<cr>
+
+"<leader>map
+noremap <silent><leader>q :wq<cr>
+noremap <silent><leader>w :w<cr>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "[ Vundle插件安装 ]
 set nocompatible
 filetype off
@@ -59,39 +119,11 @@ Plugin 'mattn/emmet-vim'
 
 call vundle#end()
 
-"=============================================================
-"[ 公共设置 ]
-" 设置编码
-set encoding=utf8
 
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-
-" 设置缩进
-set expandtab smarttab
-set tabstop=2 softtabstop=2 shiftwidth=2
-set autoindent cindent smartindent shiftround
-
-" 行号
-set number
-set numberwidth=5
-
-"当前行高亮
-au WinLeave * set nocursorline        "nocursorcolumn
-au WinEnter * set cursorline          "cursorcolumn
-set cursorline
-
-" 交换区 & 备份
-set noswapfile
-set nobackup
-
-
-"=============================================================
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "[ 插件设置 ]
 
-"[ 主题设置 ]
+"[ 主题类 ]
 syntax enable
 colorscheme railscasts
 
