@@ -11,7 +11,7 @@ set encoding=utf8
 set showcmd
 
 "设置<leader>键
-let mapleader = ","
+let mapleader = ";"
 "map <C-h> <C-w>h
 "map <C-j> <C-w>j
 "map <C-k> <C-w>k
@@ -61,6 +61,8 @@ noremap q :q<cr>
 "<leader>map
 noremap <silent><leader>q :wq<cr>
 noremap <silent><leader>w :w<cr>
+inoremap <silent><leader>e <ESC>A
+inoremap <silent><leader>b <ESC>I
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "[ Vundle插件安装 ]
 set nocompatible
