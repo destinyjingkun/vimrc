@@ -74,7 +74,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 "[ 主题类 ]
-Plugin 'jpo/vim-railscasts-theme'
+"Plugin 'jpo/vim-railscasts-theme'
+Plugin 'junegunn/seoul256.vim'
 
 "[ 窗口类 ]
 "底部导航栏
@@ -97,13 +98,17 @@ Plugin 'rking/ag.vim'
 
 "[ 辅助类 ]
 "快速注释
-Plugin 'scrooloose/nerdcommenter'
+"Plugin 'scrooloose/nerdcommenter'
 "自动补全
 Plugin 'Shougo/neocomplcache.vim'
 "括号补全
 Plugin 'jiangmiao/auto-pairs'
 "语法检测
 Plugin 'vim-syntastic/syntastic'
+"自动对齐
+Plugin 'junegunn/vim-easy-align'
+"快速注释
+Plugin 'tomtom/tcomment_vim'
 
 "[ Rails ]
 "快速的在module, class, method中跳跃
@@ -129,7 +134,10 @@ call vundle#end()
 
 "[ 主题类 ]
 syntax enable
-colorscheme railscasts
+"colorscheme railscasts
+colo seoul256
+set background=dark
+let g:seoul256_background = 233
 
 "[ 窗口类 ]
 "NerdTree
