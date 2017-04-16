@@ -40,8 +40,8 @@ noremap <silent><tab>m :tabnew<cr>
 noremap <silent><tab>e :tabclose<cr>
 noremap <silent><tab>n :tabn<cr>
 noremap <silent><tab>p :tabp<cr>
-noremap <silent><leader>t :tabnew<cr>
-noremap <silent><leader>g :tabclose<cr>
+"noremap <silent><leader>t :tabnew<cr>
+"noremap <silent><leader>g :tabclose<cr>
 noremap <silent><leader>1 :tabn 1<cr>
 noremap <silent><leader>2 :tabn 2<cr>
 noremap <silent><leader>3 :tabn 3<cr>
@@ -114,6 +114,8 @@ Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-endwise'
 "集成Bundler
 Plugin 'tpope/vim-bundler'
+"集成Rspec测试
+Plugin 'thoughtbot/vim-rspec'
 
 "[ Html,Js ]
 "神器Emmet的Vim版
@@ -165,3 +167,10 @@ endif
 
 "Ag设置
 let g:ackprg = 'ag --nogroup --nocolor --column'
+
+"[ Rails ]
+"Vim Rspec
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
