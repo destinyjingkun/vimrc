@@ -55,8 +55,11 @@ noremap <silent><leader>0 :tabn 10<cr>
 noremap <silent><s-tab> :tabnext<CR>
 inoremap <silent><s-tab> <ESC>:tabnext<CR>
 
+"[ map设置 ]
 "普通map
 noremap q :q<cr>
+"切换窗口
+noremap tp <C-W>p
 
 "<leader>map
 noremap <silent><leader>q :wq<cr>
@@ -82,7 +85,7 @@ Plugin 'junegunn/seoul256.vim'
 Plugin 'vim-airline/vim-airline'
 "文件树
 Plugin 'scrooloose/nerdtree'
-Plugin 'ctags.vim'
+"Plugin 'ctags.vim'
 "类,变量及方法
 Plugin 'majutsushi/tagbar'
 
