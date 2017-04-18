@@ -82,7 +82,7 @@ Plugin 'junegunn/seoul256.vim'
 Plugin 'vim-airline/vim-airline'
 "文件树
 Plugin 'scrooloose/nerdtree'
-"Plugin 'ctags.vim'
+Plugin 'ctags.vim'
 "类,变量及方法
 Plugin 'majutsushi/tagbar'
 
@@ -175,6 +175,23 @@ endif
 
 "Ag设置
 let g:ackprg = 'ag --nogroup --nocolor --column'
+
+"[ 辅助类 ]
+"syntastic语法检测设置
+let g:syntastic_check_on_open=1
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_wq = 0
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+"easy-align自动对齐设置
+"以视觉模式启动交互式EasyAlign（例如vipga）
+xmap ga <Plug>(EasyAlign)
+"为运动/文本对象（例如gaip）启动交互式EasyAlign 
+nmap ga <Plug>(EasyAlign)
 
 "[ Rails ]
 "Vim Rspec
