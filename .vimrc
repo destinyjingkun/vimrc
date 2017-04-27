@@ -59,7 +59,7 @@ inoremap <silent><s-tab> <ESC>:tabnext<CR>
 "普通map
 noremap q :q<cr>
 "切换窗口
-noremap tp <C-W>p
+"noremap tp <C-W>p
 
 "<leader>map
 noremap <silent><leader>q :wq<cr>
@@ -112,6 +112,8 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'junegunn/vim-easy-align'
 "快速注释
 Plugin 'tomtom/tcomment_vim'
+"快速操作符号
+Plugin 'tpope/vim-surround'
 
 "[ Rails ]
 "快速的在module, class, method中跳跃
