@@ -1,206 +1,115 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Username: Evan
-"Email: destinyjingkun@gmail.com
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+"Author: Evan                                     "
+"Email: destinyjingkun@gmail.com                  "
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+"-Vundle插件安装-----------------------------------
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+"-主题类
+"Plugin 'junegunn/seoul256.vim'
+Plugin 'mhinz/vim-janah'
+"-窗口类
+"--底部导航栏
+Plugin 'vim-airline/vim-airline'
+"--文件树
+Plugin 'scrooloose/nerdtree'        "文件管理器，方便编辑文件
+Plugin 'majutsushi/tagbar'          "查看当前代码文件中的变量和函数列表
+"-检索类
+"--快速检索
+Plugin 'kien/ctrlp.vim'
+Plugin 'easymotion/vim-easymotion'  "在当前文件中快速移动光标到指定查找位置的插件
+"-辅助类
+"Plugin 'Shougo/neocomplcache.vim'
+"Plugin 'mhinz/vim-startify'             "Vim开屏画面
+Plugin 'Valloric/YouCompleteMe'          "代码补全
+Plugin 'jiangmiao/auto-pairs'            "括号补全
+Plugin 'tpope/vim-surround'              "快速给词加环绕符号
+Plugin 'nathanaelkane/vim-indent-guides' "代码对齐引导条
+Plugin 'ianva/vim-youdao-translater'     "有道翻译
+"-开发类
+"--GolangPlugin
+Plugin 'fatih/vim-go'
+call vundle#end()
+filetype plugin indent on
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"[ 公共设置 ]
-"设置编码
+"-公共设置-----------------------------------------
+"-设置编码
 set encoding=utf8
-
-"在状态行里显示 (部分) 命令
+"-在状态行里显示 (部分) 命令
 set showcmd
-
-"设置<leader>键
+set backspace=2 "解决vim下delete键无法使用问题
+"-设置<leader>键
 let mapleader = ";"
-"map <C-h> <C-w>h
-"map <C-j> <C-w>j
-"map <C-k> <C-w>k
-"map <C-l> <C-w>l
-
-"设置缩进
+"set guifont=Firacode:h30:w5:b    "Font Size
+set linespace=3                  "行间距
+"-设置缩进
 set expandtab smarttab
 set tabstop=2 softtabstop=2 shiftwidth=2
 set autoindent cindent smartindent shiftround
-
-"行号
+"-行号
 set number
 set numberwidth=5
-
-"当前行高亮
+"-当前行高亮
 au WinLeave * set nocursorline        "nocursorcolumn
 au WinEnter * set cursorline          "cursorcolumn
 set cursorline
-
-"交换区 & 备份
-set noswapfile
-set nobackup
-
-"Tab标签
-noremap <silent><tab>m :tabnew<cr>
-noremap <silent><tab>e :tabclose<cr>
-noremap <silent><tab>n :tabn<cr>
-noremap <silent><tab>p :tabp<cr>
-"noremap <silent><leader>t :tabnew<cr>
-"noremap <silent><leader>g :tabclose<cr>
-noremap <silent><leader>1 :tabn 1<cr>
-noremap <silent><leader>2 :tabn 2<cr>
-noremap <silent><leader>3 :tabn 3<cr>
-noremap <silent><leader>4 :tabn 4<cr>
-noremap <silent><leader>5 :tabn 5<cr>
-noremap <silent><leader>6 :tabn 6<cr>
-noremap <silent><leader>7 :tabn 7<cr>
-noremap <silent><leader>8 :tabn 8<cr>
-noremap <silent><leader>9 :tabn 9<cr>
-noremap <silent><leader>0 :tabn 10<cr>
-noremap <silent><s-tab> :tabnext<CR>
-inoremap <silent><s-tab> <ESC>:tabnext<CR>
-
-"[ map设置 ]
-"普通map
+"-普通map
 noremap q :q<cr>
-"切换窗口
+"-切换窗口
 "noremap tp <C-W>p
-
 "<leader>map
 noremap <silent><leader>q :wq<cr>
 noremap <silent><leader>w :w<cr>
 inoremap <silent><leader>e <ESC>A
 inoremap <silent><leader>b <ESC>I
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"[ Vundle插件安装 ]
-set nocompatible
-filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'
-
-"[ 主题类 ]
-"Plugin 'jpo/vim-railscasts-theme'
-Plugin 'junegunn/seoul256.vim'
-
-"[ 窗口类 ]
-"底部导航栏
-Plugin 'vim-airline/vim-airline'
-"文件树
-Plugin 'scrooloose/nerdtree'
-"Plugin 'ctags.vim'
-"类,变量及方法
-Plugin 'majutsushi/tagbar'
-
-"[ 文件类 ]
-"重命名
-Plugin 'danro/rename.vim'
-
-"[ 检索类 ]
-"快速检索
-Plugin 'kien/ctrlp.vim'
-"Ag是为了替换默认的grep
-Plugin 'rking/ag.vim'
-
-"[ 辅助类 ]
-"快速注释
-"Plugin 'scrooloose/nerdcommenter'
-"自动补全
-Plugin 'Shougo/neocomplcache.vim'
-"括号补全
-Plugin 'jiangmiao/auto-pairs'
-"语法检测
-Plugin 'vim-syntastic/syntastic'
-"自动对齐
-Plugin 'junegunn/vim-easy-align'
-"快速注释
-Plugin 'tomtom/tcomment_vim'
-"快速操作符号
-Plugin 'tpope/vim-surround'
-
-"[ Rails ]
-"快速的在module, class, method中跳跃
-"Plugin 'vim-ruby/vim-ruby'
-"不装这个做毛线Rails
-Plugin 'tpope/vim-rails'
-"自动补全end关键字
-Plugin 'tpope/vim-endwise'
-"集成Bundler
-Plugin 'tpope/vim-bundler'
-"集成Rspec测试
-Plugin 'thoughtbot/vim-rspec'
-
-"[ Html,Js ]
-"神器Emmet的Vim版
-Plugin 'mattn/emmet-vim'
-
-call vundle#end()
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"[ 插件设置 ]
-
-"[ 主题类 ]
+"-插件设置-----------------------------------------
+"-主题类 
 syntax enable
-"colorscheme railscasts
-colo seoul256
-set background=dark
-let g:seoul256_background = 233
-
-"[ 窗口类 ]
-"NerdTree
-map tt :NERDTreeToggle<CR>
+"colo seoul256
+"set background=dark
+"let g:seoul256_background = 233
+autocmd ColorScheme janah highlight Normal ctermbg=235
+colorscheme janah
+"-窗口类
+"--NerdTree
+map nt :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeShowHidden = 1            "NERDTREE显示隐藏文件
 let NERDChristmasTree=0
-let NERDTreeWinSize=35
+let NERDTreeWinSize=30
 let NERDTreeChDirMode=2
 let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$']
 let NERDTreeShowBookmarks=1
 let NERDTreeWinPos="left"
-
-"airline
+"--Tagbar
+nmap tb :TagbarToggle<CR>
+let g:tagbar_width=30
+"--Airline
 set laststatus=2 "永远显示状态栏
 set t_Co=256"
-
-"tarbar
-let g:tagbar_width=35
-let g:tagbar_autofocus=1
-nmap tb :TagbarToggle<CR>
-
-"[ 检索类 ]
-"CtrlP
+"-检索类
+"--CtrlP
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.png,*.jpg,*.jpeg,*.gif " MacOSX/Linux
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-  " Use ag in CtrlP for listing files.
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-  " Ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
-
-"Ag设置
-let g:ackprg = 'ag --nogroup --nocolor --column'
-
-"[ 辅助类 ]
-"syntastic语法检测设置
-let g:syntastic_check_on_open=1
-let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_wq = 0
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-"easy-align自动对齐设置
-"以视觉模式启动交互式EasyAlign（例如vipga）
-xmap ga <Plug>(EasyAlign)
-"为运动/文本对象（例如gaip）启动交互式EasyAlign 
-nmap ga <Plug>(EasyAlign)
-
-"[ Rails ]
-"Vim Rspec
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
+"--neocomplete自启动
+"let g:neocomplete#enable_at_startup = 1
+"--YouCompleteMe
+let g:ycm_key_list_stop_completion = ['<CR>'] "YCM按enter换行问题
+"--vim-indent-guides
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_guide_size=1
+"--EasyMotion
+nmap <leader>s <Plug>(easymotion-F)
+nmap <leader>f <Plug>(easymotion-f)
+nmap <leader>j <Plug>(easymotion-j)
+nmap <leader>k <Plug>(easymotion-k)
+nmap <leader>h <Plug>(easymotion-h)
+nmap <leader>l <Plug>(easymotion-l)
+"--有道翻译
+vnoremap <silent> <C-T> :<C-u>Ydv<CR>
+nnoremap <leader>t :<C-u>Ydc<CR>
+noremap <leader>yd :<C-u>Yde<CR>
