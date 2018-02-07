@@ -23,15 +23,16 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'easymotion/vim-easymotion'  "在当前文件中快速移动光标到指定查找位置的插件
 "-辅助类
 "Plugin 'Shougo/neocomplcache.vim'
-"Plugin 'mhinz/vim-startify'             "Vim开屏画面
-Plugin 'Valloric/YouCompleteMe'          "代码补全
-Plugin 'jiangmiao/auto-pairs'            "括号补全
-Plugin 'tpope/vim-surround'              "快速给词加环绕符号
-Plugin 'nathanaelkane/vim-indent-guides' "代码对齐引导条
-Plugin 'ianva/vim-youdao-translater'     "有道翻译
+"Plugin 'mhinz/vim-startify'              "Vim开屏画面
+Plugin 'Valloric/YouCompleteMe'           "代码补全
+Plugin 'jiangmiao/auto-pairs'             "括号补全
+Plugin 'tpope/vim-surround'               "快速给词加环绕符号
+Plugin 'nathanaelkane/vim-indent-guides'  "代码对齐引导条
+Plugin 'ianva/vim-youdao-translater'      "有道翻译
 "-开发类
 "--GolangPlugin
-Plugin 'fatih/vim-go'
+Plugin 'fatih/vim-go'                     "Golang Develop Tool
+Plugin 'tpope/vim-fugitive'               "Git Tool
 call vundle#end()
 filetype plugin indent on
 
