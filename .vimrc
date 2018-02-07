@@ -2,38 +2,33 @@
 "Author: Evan                                     "
 "Email: destinyjingkun@gmail.com                  "
 """""""""""""""""""""""""""""""""""""""""""""""""""
-"-Vundle插件安装-----------------------------------
+"-Plugin Install-----------------------------------
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-"-主题类
-"Plugin 'junegunn/seoul256.vim'
-Plugin 'mhinz/vim-janah'
+call plug#begin('~/.vim/plugged')
+"Plug 'junegunn/seoul256.vim'
+Plug 'mhinz/vim-janah'            "主题
 "-窗口类
-"--底部导航栏
-Plugin 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline'    "底部导航栏
 "--文件树
-Plugin 'scrooloose/nerdtree'        "文件管理器，方便编辑文件
-Plugin 'majutsushi/tagbar'          "查看当前代码文件中的变量和函数列表
+Plug 'scrooloose/nerdtree'        "文件管理器，方便编辑文件
+Plug 'majutsushi/tagbar'          "查看当前代码文件中的变量和函数列表
 "-检索类
 "--快速检索
-Plugin 'kien/ctrlp.vim'
-Plugin 'easymotion/vim-easymotion'  "在当前文件中快速移动光标到指定查找位置的插件
+Plug 'kien/ctrlp.vim'
+Plug 'easymotion/vim-easymotion'  "在当前文件中快速移动光标到指定查找位置的插件
 "-辅助类
-"Plugin 'Shougo/neocomplcache.vim'
-"Plugin 'mhinz/vim-startify'              "Vim开屏画面
-Plugin 'Valloric/YouCompleteMe'           "代码补全
-Plugin 'jiangmiao/auto-pairs'             "括号补全
-Plugin 'tpope/vim-surround'               "快速给词加环绕符号
-Plugin 'nathanaelkane/vim-indent-guides'  "代码对齐引导条
-Plugin 'ianva/vim-youdao-translater'      "有道翻译
+"Plug 'Shougo/neocomplcache.vim'
+"Plug 'mhinz/vim-startify'              "Vim开屏画面
+Plug 'Valloric/YouCompleteMe'           "代码补全
+Plug 'jiangmiao/auto-pairs'             "括号补全
+Plug 'tpope/vim-surround'               "快速给词加环绕符号
+Plug 'nathanaelkane/vim-indent-guides'  "代码对齐引导条
+Plug 'ianva/vim-youdao-translater'      "有道翻译
 "-开发类
-"--GolangPlugin
-Plugin 'fatih/vim-go'                     "Golang Develop Tool
-Plugin 'tpope/vim-fugitive'               "Git Tool
-call vundle#end()
+Plug 'fatih/vim-go'                     "Golang Develop Tool
+Plug 'tpope/vim-fugitive'               "Git Tool
+call plug#end()
 filetype plugin indent on
 
 "-公共设置-----------------------------------------
@@ -41,7 +36,7 @@ filetype plugin indent on
 set encoding=utf8
 "-在状态行里显示 (部分) 命令
 set showcmd
-set backspace=2 "解决vim下delete键无法使用问题
+set backspace=eol,start,indent "解决Vim下delete键问题
 "-设置<leader>键
 let mapleader = ";"
 "set guifont=Firacode:h30:w5:b    "Font Size
