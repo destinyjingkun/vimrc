@@ -1,5 +1,6 @@
 # vimrc
-My vimrc backup
+预览图:
+![Alt text](https://github.com/destinyjingkun/vimrc/blob/master/image/preview.jpeg)
 ### 1.首先安装vim-plug包管理插件
 #### Vim
 
