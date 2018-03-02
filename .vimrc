@@ -6,58 +6,64 @@
 set nocompatible
 filetype off
 call plug#begin('~/.vim/plugged')
-"Plug 'junegunn/seoul256.vim'
-Plug 'mhinz/vim-janah'            "主题
-"-窗口类
-Plug 'vim-airline/vim-airline'    "底部导航栏
+"参数说明: on 首次加载插件的时候调用, for
+"指定加载哪种类型文件的时候才加载插件,加快Vim的启动速度
+Plug 'junegunn/seoul256.vim'
+"Plug 'mhinz/vim-janah'                  "主题
+Plug 'vim-airline/vim-airline'          "底部导航栏
 "--文件树
-Plug 'scrooloose/nerdtree'        "文件管理器，方便编辑文件
-Plug 'majutsushi/tagbar'          "查看当前代码文件中的变量和函数列表
-"-检索类
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}            "文件管理器，方便编辑文件
+Plug 'majutsushi/tagbar'                "查看当前代码文件中的变量和函数列表
 "--快速检索
 Plug 'kien/ctrlp.vim'
-Plug 'easymotion/vim-easymotion'  "在当前文件中快速移动光标到指定查找位置的插件
+Plug 'easymotion/vim-easymotion'        "在当前文件中快速移动光标到指定查找位置的插件
+"Plug 'justinmk/vim-sneak'
 "-辅助类
-"Plug 'Shougo/neocomplcache.vim'
 "Plug 'mhinz/vim-startify'              "Vim开屏画面
 Plug 'Valloric/YouCompleteMe'           "代码补全
 Plug 'jiangmiao/auto-pairs'             "括号补全
 Plug 'tpope/vim-surround'               "快速给词加环绕符号
+Plug 'scrooloose/nerdcommenter'         "快速注释
 Plug 'nathanaelkane/vim-indent-guides'  "代码对齐引导条
 Plug 'ianva/vim-youdao-translater'      "有道翻译
+"Plug 'junegunn/limelight.vim'           "关灯模式
+Plug 'tpope/vim-fugitive'               "Git
+Plug 'airblade/vim-gitgutter'           "git修改过的行高亮
+"Plug 'terryma/vim-multiple-cursors'     "多光标输入<C-n>贼好用
+"Plug 'terryma/vim-expand-region'        "V模式快速选择
 "-开发类
 Plug 'fatih/vim-go'                     "Golang Develop Tool
-Plug 'tpope/vim-fugitive'               "Git Tool
+Plug 'mattn/emmet-vim'
+"Plug 'noahfrederick/vim-composer'
+"Plug 'noahfrederick/vim-laravel'
+"Plug 'w0rp/ale'                         "语法检测
 call plug#end()
 filetype plugin indent on
 
 "-公共设置-----------------------------------------
-"-设置编码
-set encoding=utf8
-"-在状态行里显示 (部分) 命令
-set showcmd
-set backspace=eol,start,indent "解决Vim下delete键问题
-"-设置<leader>键
-let mapleader = ";"
-"set guifont=Firacode:h30:w5:b    "Font Size
-set linespace=3                  "行间距
-"-设置缩进
-set expandtab smarttab
+set encoding=utf8                       "设置编码
+set helplang=cn                         "中文帮助文档
+set showcmd                             "右下角显示命令行
+set backspace=eol,start,indent          "解决Vim下delete键问题
+set wildmode=list:longest               "命令行模式Tab补全
+let mapleader = ";"                     "设置<leader>键
+set expandtab smarttab                  "设置缩进
 set tabstop=2 softtabstop=2 shiftwidth=2
+au BufRead,BufNewFile *.php set tabstop=4 softtabstop=4 shiftwidth=4
 set autoindent cindent smartindent shiftround
-"-行号
-set number
-set numberwidth=5
-"-当前行高亮
-au WinLeave * set nocursorline        "nocursorcolumn
-au WinEnter * set cursorline          "cursorcolumn
+set number                              "显示行号
+set numberwidth=5                       "行号宽度
+au WinLeave * set nocursorline          "当前行高亮
+au WinEnter * set cursorline          
 set cursorline
 "-普通map
-noremap q :q<cr>
-"-切换窗口
-"noremap tp <C-W>p
+"noremap q :q<cr>
+"-插入模式
+imap jj <ESC>
+"--切换窗口
+noremap tp <C-W>p
 "<leader>map
-noremap <silent><leader>q :wq<cr>
+noremap <silent><leader>q :q<cr>
 noremap <silent><leader>w :w<cr>
 inoremap <silent><leader>e <ESC>A
 inoremap <silent><leader>b <ESC>I
@@ -65,20 +71,21 @@ inoremap <silent><leader>b <ESC>I
 "-插件设置-----------------------------------------
 "-主题类 
 syntax enable
-"colo seoul256
-"set background=dark
-"let g:seoul256_background = 233
-autocmd ColorScheme janah highlight Normal ctermbg=235
-colorscheme janah
+set t_Co=256
+let g:seoul256_background = 235
+colo seoul256
+set background=dark
+"autocmd ColorScheme janah highlight Normal ctermbg=235
+"colorscheme janah
 "-窗口类
 "--NerdTree
 map nt :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeShowHidden = 1            "NERDTREE显示隐藏文件
 let NERDChristmasTree=0
-let NERDTreeWinSize=30
+let NERDTreeWinSize=25
 let NERDTreeChDirMode=2
-let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$']
+let NERDTreeIgnore=['\~$', '\.pyc', '\.swp', '\.git', '\.idea']
 let NERDTreeShowBookmarks=1
 let NERDTreeWinPos="left"
 "--Tagbar
@@ -95,17 +102,45 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 "let g:neocomplete#enable_at_startup = 1
 "--YouCompleteMe
 let g:ycm_key_list_stop_completion = ['<CR>'] "YCM按enter换行问题
+let g:ycm_autoclose_preview_window_after_completion = 1 "补全之后自动关闭
 "--vim-indent-guides
 let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_guide_size=1
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
 "--EasyMotion
 nmap <leader>s <Plug>(easymotion-F)
 nmap <leader>f <Plug>(easymotion-f)
 nmap <leader>j <Plug>(easymotion-j)
 nmap <leader>k <Plug>(easymotion-k)
-nmap <leader>h <Plug>(easymotion-h)
-nmap <leader>l <Plug>(easymotion-l)
+"nmap <leader>h <Plug>(easymotion-h)
+"nmap <leader>l <Plug>(easymotion-l)
 "--有道翻译
-vnoremap <silent> <C-T> :<C-u>Ydv<CR>
+vnoremap <leader>t :<C-u>Ydv<CR>
 nnoremap <leader>t :<C-u>Ydc<CR>
 noremap <leader>yd :<C-u>Yde<CR>
+"--Limelight
+"--vim-gitgutter
+set updatetime=250                            "默认4s改250ms
+"Vim-go
+let g:go_highlight_structs = 1 
+let g:go_highlight_methods = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+nnoremap <leader>g :GoRun<CR>
+"Emmet
+let g:user_emmet_mode='inv'
+"Ale
+"普通模式下，sp前往上一个错误或警告，sn前往下一个错误或警告
+"nmap sp <Plug>(ale_previous_wrap)
+"nmap sn <Plug>(ale_next_wrap)
+"<Leader>s触发/关闭语法检查
+"nmap <Leader>s :ALEToggle<CR>
+"<Leader>d查看错误或警告的详细信息
+"nmap <Leader>d :ALEDetail<CR>
+"文件内容发生变化时不进行检查
+"let g:ale_lint_on_text_changed = 'never'
+"打开文件时不进行检查
+"let g:ale_lint_on_enter = 0
+"let g:ale_lint_on_save = 1
+"let g:ale_linters = {'go': 'golang'}
