@@ -19,7 +19,6 @@ Plug 'kien/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'        "在当前文件中快速移动光标到指定查找位置的插件
 "Plug 'justinmk/vim-sneak'
 "-辅助类
-"Plug 'mhinz/vim-startify'              "Vim开屏画面
 Plug 'Valloric/YouCompleteMe'           "代码补全
 Plug 'jiangmiao/auto-pairs'             "括号补全
 Plug 'tpope/vim-surround'               "快速给词加环绕符号
@@ -34,9 +33,10 @@ Plug 'airblade/vim-gitgutter'           "git修改过的行高亮
 "-开发类
 Plug 'fatih/vim-go'                     "Golang Develop Tool
 Plug 'mattn/emmet-vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'              "代码片段
 "Plug 'noahfrederick/vim-composer'
 "Plug 'noahfrederick/vim-laravel'
-"Plug 'w0rp/ale'                         "语法检测
 call plug#end()
 filetype plugin indent on
 
@@ -44,6 +44,8 @@ filetype plugin indent on
 set encoding=utf8                       "设置编码
 set helplang=cn                         "中文帮助文档
 set showcmd                             "右下角显示命令行
+set foldmethod=syntax                   "代码折叠方式
+set foldnestmax=1
 set backspace=eol,start,indent          "解决Vim下delete键问题
 set wildmode=list:longest               "命令行模式Tab补全
 let mapleader = ";"                     "设置<leader>键
@@ -61,7 +63,7 @@ set cursorline
 "-插入模式
 imap jj <ESC>
 "--切换窗口
-noremap tp <C-W>p
+noremap cp <C-W>p
 "<leader>map
 noremap <silent><leader>q :q<cr>
 noremap <silent><leader>w :w<cr>
@@ -101,6 +103,9 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 "--neocomplete自启动
 "let g:neocomplete#enable_at_startup = 1
 "--YouCompleteMe
+let g:ycm_key_list_select_completion = ['<S-j>', '<Down>']  "解决跟UltiSnips冲突
+let g:ycm_key_list_previous_completion = ['<S-k>', '<Up>']
+"let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:ycm_key_list_stop_completion = ['<CR>'] "YCM按enter换行问题
 let g:ycm_autoclose_preview_window_after_completion = 1 "补全之后自动关闭
 "--vim-indent-guides
@@ -117,30 +122,20 @@ nmap <leader>k <Plug>(easymotion-k)
 "--有道翻译
 vnoremap <leader>t :<C-u>Ydv<CR>
 nnoremap <leader>t :<C-u>Ydc<CR>
-noremap <leader>yd :<C-u>Yde<CR>
 "--Limelight
 "--vim-gitgutter
 set updatetime=250                            "默认4s改250ms
-"Vim-go
+"vim-go
 let g:go_highlight_structs = 1 
 let g:go_highlight_methods = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+let g:go_fold_enable = ['block', 'varconst', 'package_comment']
+let g:go_fmt_experimental = 1
 nnoremap <leader>g :GoRun<CR>
 "Emmet
 let g:user_emmet_mode='inv'
-"Ale
-"普通模式下，sp前往上一个错误或警告，sn前往下一个错误或警告
-"nmap sp <Plug>(ale_previous_wrap)
-"nmap sn <Plug>(ale_next_wrap)
-"<Leader>s触发/关闭语法检查
-"nmap <Leader>s :ALEToggle<CR>
-"<Leader>d查看错误或警告的详细信息
-"nmap <Leader>d :ALEDetail<CR>
-"文件内容发生变化时不进行检查
-"let g:ale_lint_on_text_changed = 'never'
-"打开文件时不进行检查
-"let g:ale_lint_on_enter = 0
-"let g:ale_lint_on_save = 1
-"let g:ale_linters = {'go': 'golang'}
+"UltiSnips
+let g:UltiSnipsJumpForwardTrigger="<S-j>"     "Shift+j  向前选择
+let g:UltiSnipsJumpBackwardTrigger="<S-k>"    "Shift+k  向后选择
