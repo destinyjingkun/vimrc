@@ -41,6 +41,7 @@ Plug 'Shougo/vimproc.vim'
 Plug 'Shougo/vimshell.vim'
 Plug 'sebdah/vim-delve'
 Plug 'mattn/emmet-vim'
+Plug 'jparise/vim-graphql'               "vim-graphql support
 "Plug 'SirVer/ultisnips'                 "片段(代码块)引擎
 "Plug 'honza/vim-snippets'               "片段(代码块)库
 "-Flutter移动端开发
